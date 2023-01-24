@@ -47,6 +47,7 @@ router.delete(
   '/user',
   tokenControl,
   authControl,
+  userStatusAuthControl,
   userValidator.bodyId,
   async (req, res) => {
     try {
