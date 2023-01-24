@@ -7,6 +7,7 @@ const authValidator = validators.authValidator;
 const tokenControl = verifyToken.tokenControl;
 const HttpStatusCode = require('http-status-codes');
 const { errorSender } = require('../utils');
+const Roles = require('../models/roles');
 
 router.post('/login', authValidator.login, async (req, res) => {
   try {
@@ -141,7 +142,10 @@ router.get('/token-decode', tokenControl, async (req, res) => {
 
 router.post('/sign-up', authValidator.signUp, async (req, res) => {
   try {
-    const result = await userTransactions.insertAsync(req.body);
+    const result = await userTransactions.insertAsync({
+      ...req.body,
+      UserTypeName: Roles.Administrator
+    });
     if (!result.affectedRows)
       throw errorSender.errorObject(
         HttpStatusCode.INTERNAL_SERVER_ERROR,

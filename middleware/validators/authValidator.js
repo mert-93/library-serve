@@ -97,8 +97,7 @@ class AuthValidator {
             .pattern(new RegExp('^[A-Za-zÇçÖöŞşÜüĞğİı ]+$'))
             .required(),
           EmailAddress: joi.string().max(100).email().required(),
-          Password: joi.string().max(99).required(),
-          UserTypeName: joi.string().max(100).required()
+          Password: joi.string().max(99).required()
         })
         .validateAsync(req.body);
       next();
