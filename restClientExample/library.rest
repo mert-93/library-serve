@@ -1,0 +1,40 @@
+GET {{baseUrl}}/library HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+###
+
+GET {{baseUrl}}/library/1 HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+###
+
+POST {{baseUrl}}/library HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+{
+    "LibraryName": "x"
+}
+
+###
+
+PUT {{baseUrl}}/library HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+{
+    "Id": 1,
+    "LibraryName": "x"
+}
+
+###
+
+DELETE  {{baseUrl}}/library HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+{
+    "Id": 1
+}
