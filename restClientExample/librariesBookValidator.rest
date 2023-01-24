@@ -1,0 +1,26 @@
+GET {{baseUrl}}/libraries-book HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+###
+
+
+POST {{baseUrl}}/libraries-book HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+{
+    "LibraryId": 4,
+    "BookId": 2
+}
+
+###
+
+
+DELETE  {{baseUrl}}/libraries-book HTTP/1.1
+Content-Type: application/json
+token: {{token}}
+
+{
+    "Id": 1
+}

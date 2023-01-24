@@ -5,6 +5,7 @@ const libraryTransactions = TransactionsFactory.creating('libraryTransactions');
 const libraryValidator = validators.libraryValidator;
 const tokenControl = verifyToken.tokenControl;
 const authControl = authorization.authControl;
+const limitedAuthControl = authorization.limitedAuthControl;
 const HttpStatusCode = require('http-status-codes');
 const { errorSender } = require('../utils');
 
@@ -12,11 +13,12 @@ router.get(
   '/library',
   tokenControl,
   authControl,
+  limitedAuthControl,
   libraryValidator.limitAndOffset,
   async (req, res) => {
     try {
       if (req.Individual_Transactions)
-        req.query = { ...req.query, UserId: req.decode.UserId };
+        req.query = { ...req.query, where: { UserId: req.decode.UserId } };
       const result = await libraryTransactions.selectViewAsync(req.query);
       res.json(result);
     } catch (err) {
@@ -31,6 +33,7 @@ router.get(
   '/library/:Id',
   tokenControl,
   authControl,
+  limitedAuthControl,
   libraryValidator.paramId,
   async (req, res) => {
     try {
@@ -50,6 +53,7 @@ router.delete(
   '/library',
   tokenControl,
   authControl,
+  limitedAuthControl,
   libraryValidator.bodyId,
   async (req, res) => {
     try {
@@ -74,6 +78,7 @@ router.put(
   '/library',
   tokenControl,
   authControl,
+  limitedAuthControl,
   libraryValidator.update,
   async (req, res) => {
     try {
@@ -100,6 +105,7 @@ router.post(
   '/library',
   tokenControl,
   authControl,
+  limitedAuthControl,
   libraryValidator.insert,
   async (req, res) => {
     try {

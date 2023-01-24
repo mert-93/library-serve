@@ -11,6 +11,7 @@ app.use(routers.userRouter);
 app.use(routers.libraryRouter);
 app.use(routers.authorRouter);
 app.use(routers.bookRouter);
+app.use(routers.librariesBookRouter);
 
 app.use((req, res, next) => {
   res.send('404 NOT FOUND');

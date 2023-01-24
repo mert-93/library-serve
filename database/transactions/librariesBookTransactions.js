@@ -4,18 +4,20 @@ const {
   FadabHelper
 } = require('fadab-mysql-helper');
 
-class LibraryTransactions extends FadabHelper {
+class LibrariesBookTransactions extends FadabHelper {
   constructor() {
     super();
-    this.baseTable = 'tblLibrary';
-    this.vwName = 'vwUsersLibrariesList';
+    this.baseTable = 'tblLibrariesBooks';
+    this.vwName = 'vwLibrariesBooksList';
   }
+
   async selectViewAsync(selectOptions = null) {
     return selectAsync(this.vwName, selectOptions);
   }
+
   async findViewAsync(where) {
     return findOneAsync(this.vwName, where);
   }
 }
 
-module.exports = LibraryTransactions;
+module.exports = LibrariesBookTransactions;

@@ -10,11 +10,11 @@ class UserTransactions extends FadabHelper {
     this.baseTable = 'tblUser';
   }
 
-  selectViewAsync(selectOptions = null) {
+  async selectViewAsync(selectOptions = null) {
     return selectAsync('vwUserList', selectOptions);
   }
 
-  findViewAsync(where) {
+  async findViewAsync(where) {
     return findOneAsync('vwUserList', where);
   }
 }
